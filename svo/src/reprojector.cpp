@@ -69,7 +69,7 @@ void Reprojector::reprojectMap(
 
   // Identify those Keyframes which share a common field of view.
   SVO_START_TIMER("reproject_kfs");
-  list< pair<FramePtr,double> > close_kfs;
+  std::list< std::pair<FramePtr,double> > close_kfs;
   map_.getCloseKeyframes(frame, close_kfs);
 
   // Sort KFs with overlap according to their closeness
@@ -84,7 +84,7 @@ void Reprojector::reprojectMap(
       it_frame!=ite_frame && n<options_.max_n_kfs; ++it_frame, ++n)
   {
     FramePtr ref_frame = it_frame->first;
-    overlap_kfs.push_back(pair<FramePtr,size_t>(ref_frame,0));
+    overlap_kfs.push_back(std::pair<FramePtr,size_t>(ref_frame,0));
 
     // Try to reproject each mappoint that the other KF observes
     for(auto it_ftr=ref_frame->fts_.begin(), ite_ftr=ref_frame->fts_.end();

@@ -129,7 +129,7 @@ public:
 
   /// Compute the uncertainty of the measurement.
   static double computeTau(
-      const SE3& T_ref_cur,
+      const Sophus::SE3<double>& T_ref_cur,
       const Vector3d& f,
       const double z,
       const double px_error_angle);
